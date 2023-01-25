@@ -194,7 +194,7 @@ def get_user_keys(client_dict: dict = {'sally': None, 'jake': None, 'possums_inc
     
     return client_dict
 
-def run_all(verbose: bool = True, fetch_keys:bool = False) -> None:
+def run_all(verbose:bool = True, fetch_keys:bool = False) -> None:
     # build everything
     
     builder_functions = {
