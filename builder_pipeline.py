@@ -93,7 +93,7 @@ def building_the_second_route() -> Tuple[int, dict]:
             "datetime": {
                 "type": "object",
                 "properties": {
-                    "<iso>": {
+                    "<date_iso>": {
                         "type": "string",
                         "format": "date-time"
                     }

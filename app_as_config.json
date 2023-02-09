@@ -1,0 +1,117 @@
+{
+    "name": "Animal Crossings",
+    "description": "The most cutting edge platform for tracking and celebrating animal sightings",
+    "limit": 10000,
+    "docId": "animal_crossings",
+    "routes": [
+        {
+            "name": "Locations",
+            "description": "This route hosts a collection of locations where animal sightings may have taken place...",
+            "methods": ["GET", "POST", "PUT", "DELETE"],
+            "docId": "locations",
+            "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 5,
+                        "maxLength": 50
+                    },
+                    "description": {
+                        "type": "string",
+                        "minLength": 5,
+                        "maxLength": 200
+                    }
+                },
+                "required": [
+                    "name",
+                    "description"
+                ]
+            }
+        },
+        {
+            "name": "Sightings",
+            "description": "This route hosts a collection of animal sightings. A sighting represents a location, animal type, and time",
+            "methods": [
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE"
+            ],
+            "docId": "sightings",
+            "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "minLength": 5,
+                        "maxLength": 50
+                    },
+                    "animal_type": {
+                        "type": "string",
+                        "enum": ["beaver", "seagull", "possum"]
+                    },
+                    "datetime": {
+                        "type": "object",
+                        "properties": {
+                            "<date_iso>": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "location",
+                    "animal_type",
+                    "datetime"
+                ]
+            }
+        }
+    ],
+    "users": [
+        {
+            "name": "Sally",
+            "superUser": true,
+            "permissions": {
+                "read": [
+                    "locations",
+                    "sightings"
+                ],
+                "write": [
+                    "locations",
+                    "sightings"
+                ]
+            },
+            "docId": "sally"
+        },
+        {
+            "name": "Jake",
+            "superUser": false,
+            "permissions": {
+                "read": [
+                    "locations",
+                    "sightings"
+                ],
+                "write": [
+                    "locations",
+                    "sightings"
+                ]
+            },
+            "docId": "jake"
+        },
+        {
+            "name": "Possums Incorporated",
+            "superUser": false,
+            "permissions": {
+                "read": [
+                    "sightings"
+                ],
+                "write": []
+            },
+            "docId": "possums_inc"
+        }
+    ]
+}
