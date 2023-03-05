@@ -34,6 +34,7 @@ def building_the_app() -> Tuple[int, dict]:
         "name": "Animal Crossings",
         "description": "The most cutting edge platform for tracking and celebrating animal sightings",
         "limit": 10000,
+        "contactEmail": "admin@postget.dev",
         "docId": app_id
     }
         
